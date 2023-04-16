@@ -131,3 +131,72 @@ Integer cannot be converted to String
                                ^
 1 error
 ```
+
+Example 3: Working of a generic function.
+
+```
+// Java code to demonstrate working of
+// generic function
+import java.util.*; 
+
+class Test 
+{ 
+    // Declaration of generic function
+    // Type parameters defined before 
+    // return type
+    public static<T> int count(T arr[], T x)                   // we need to madatorily specify function return type as "static<T> int"
+    {
+        int res = 0;
+        
+        // Traverse the array
+        for(T e: arr)
+        {
+            if (e.equals(x))
+                res++;
+        }
+        return res;
+    }
+    public static void main(String[] args) 
+    { 
+        Integer arr[] = {10, 20, 30, 40, 10, 30};
+        System.out.println(count(arr, 10));            //We don't need to specify count<Integer> here because java automatically infers this from the arguments
+    } 
+} 
+---------------------------------------------------------
+Output:
+2
+```
+
+Question: Guess the output of the following code.
+
+```
+// Java code to demonstrate working of
+// generic function
+import java.util.*; 
+
+// Generic class
+class MyGen<T> {
+    T x;
+    static int count;
+    MyGen()
+    {
+        count++;
+    }
+}
+class Test 
+{ 
+    public static void main(String[] args) 
+    { 
+        // Creating object of generic class
+        MyGen<Integer> m1 = new MyGen<>();
+        
+        // Creating object of a generic class
+        MyGen<Integer> m2 = new MyGen<>();
+        
+        System.out.println(MyGen.count);
+    } 
+} 
+-------------------------------------------------
+Output:
+2
+```
