@@ -5,7 +5,15 @@
 <h3>ArrayList</h3>
 
 ```
+#Array to List conversion
+
 List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
+
+or
+
+Integer[] arr = {1, 2, 3, 4, 5};
+List<Integer> list = new ArrayList<>(Arrays.asList(arr));
+
 ------------------------------------------------------------------------------------
 		// For Each Loop for iterating ArrayList
 		for (int i : numbers)
