@@ -1,5 +1,133 @@
 # Java-Jargon
 
+Note:
+
+<ul>
+	<li>The .java file name should be equal to the public class name that contains the main method in it</li>
+	<li>Other sibling classes cannot be public or static</li>
+	<li>The inner classes can be used with any modifiers</li>
+</ul>
+
+<h2>Access Modifiers</h3>
+
+<h3>Private Access Modifier</h3>
+As the name suggests, the scope of this modifier is very restricted.</br>
+When the data members and the class methods are prefixed with a private modifier, they can be accessed only in the class itself even the other classes of the same package cannot access the private members or methods.</br>
+
+```
+class Scaler {
+
+  //Private members
+  private int roll;
+  private String name;
+
+  //Parameterised Constructor
+  Scaler(int a) {
+    System.out.print(a);
+  }
+
+  //Default constructor private
+  private Scaler() {}
+
+  //Private method
+  private void print() {
+    System.out.println("This is the Scaler class");
+  }
+}
+
+class Main {
+
+  public static void main(String args[]) {
+    //Creating the instance of the Scaler class
+    //This will successful run
+    Scaler ob1 = new Scaler(1);
+      
+    //Creating another instance of Scaler class
+    //This will cause an error
+    Scaler ob = new Scaler();
+      
+    //These two lines also cause errors.
+    ob.name = "Aayush";
+    ob.print();
+  }
+}
+```
+
+<h3>Public Access Modifier</h3>
+The public modifier provides no restriction on the methods, classes, and instance members of the particular class.</br>
+When they are prefixed by the public modifier, they can be accessed in any package, in any class. The scope of the public modifier is very flexible as compared to the other modifiers.</br>
+
+```
+package First;
+
+public class Scaler {
+
+  //Instance member
+  public int id = 1;
+
+  //Class method
+  public void print() {
+    System.out.println("This is the Scaler class");
+  }
+}
+-----------------------------------------------------------------------
+package Second;
+
+import First.Scaler;
+
+public class InterviewBit {
+
+  public static void main(String[] args) {
+    //Creating the instance of the Scaler class
+    Scaler ob = new Scaler();
+    //Accessing the instance member of scaler class
+    System.out.println(ob.id); //print 1
+    //This is the Scaler class will print
+    ob.print();
+  }
+}
+```
+
+<h3>Protected Access Modifier</h3>
+We can use protected modifier methods, instance members within in the same package and access them in another package with the help of a child class which means we have to extend the class that contains protected members in another package.</br>
+
+We cannot access them directly by creating the object of a class that contains protected members and functions.</br>
+
+```
+package First;
+
+public class Scaler {
+
+  int id = 1;
+
+  protected void print() {
+    System.out.println("This is the Scaler class");
+  }
+}
+-----------------------------------------------------------------------
+package Second;
+
+import First.Scaler;
+
+class InterviewBit extends Scaler {
+
+  public static void main(String[] args) {
+    Scaler ob = new Scaler();
+    //This line will cause an error
+    ob.print();
+
+    InterviewBit ob1 = new InterviewBit();
+    //This line will not cause an error
+    ob1.print();
+  }
+}
+```
+
+<h3>Default Access Modifier</h3>
+
+When the instance members, methods of the class are not specified with any modifier. It is said to be having a default modifier by default. The instance members and methods declared with default modifier can be accessed only within the same package. Hence it is sometimes called package-private.</br>
+
+Real-life example: In the Facebook account, when you set your privacy status to "visible to your friends only".You and your's known friends can access your status.</br>
 
 
 <h3>ArrayList</h3>
