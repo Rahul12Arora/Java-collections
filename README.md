@@ -10,11 +10,11 @@ Note:
 
 
 
-#Collections
+# Collections
 
 ![image](https://user-images.githubusercontent.com/108695777/232307390-599e05b4-c71c-4210-a0fa-d561e5620cc2.png)
 
-#Generics
+# Generics
 
 **The idea is to allow type (Integer, String, … etc and user-defined types) to be a parameter to methods, classes and interfaces. For example, classes like HashSet, ArrayList, HashMap, etc use generics very well. The generic classes can only be used for Non-primitive types and wrapper classes. Here are the major advantages of Generics in Java:**
 
