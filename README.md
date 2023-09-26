@@ -178,3 +178,51 @@ class Test
 Output:
 2
 ```
+
+#Arguments are Pass Bye Value In Java
+
+In Java, all arguments to methods are passed by value, but it's important to clarify what "passed by value" means in this context, especially when dealing with objects.
+
+1. **Primitive Data Types (Passed by Value):** For primitive data types (e.g., `int`, `float`, `boolean`), the actual value of the variable is passed to the method. Any changes made to the parameter inside the method do not affect the original variable.
+
+    ```java
+    public void modifyValue(int x) {
+        x = 10;
+    }
+    
+    int num = 5;
+    modifyValue(num);
+    System.out.println(num); // Output: 5 (unchanged)
+    ```
+
+2. **Reference Data Types (Passed by Value):** When you pass an object (e.g., instances of classes) as an argument to a method, what is actually passed is a copy of the reference to the object in memory. This copy of the reference still points to the same object in memory. However, you cannot change the original reference itself within the method.
+
+    ```java
+    class MyClass {
+        int value;
+        MyClass(int value) {
+            this.value = value;
+        }
+    }
+
+    public void modifyObjectReference(MyClass obj) {
+        obj = new MyClass(10); // This changes the local reference, not the original object.
+    }
+
+    public void modifyObjectValue(MyClass obj) {
+        obj.value = 10; // This changes the value of the original object.
+    }
+
+    MyClass myObject = new MyClass(5);
+    modifyObjectReference(myObject);
+    System.out.println(myObject.value); // Output: 5 (unchanged)
+
+    modifyObjectValue(myObject);
+    System.out.println(myObject.value); // Output: 10 (changed)
+    ```
+
+In the first example (`modifyObjectReference`), the local reference `obj` is changed to point to a new object, but the original object remains unchanged.
+
+In the second example (`modifyObjectValue`), we modify the object's internal state through the reference, so the changes are reflected in the original object.
+
+In summary, Java passes all arguments by value, but when dealing with reference types, it's essential to understand that you are passing a copy of the reference, not the object itself. Changes to the object's state through the reference are visible outside the method, while reassigning the reference inside the method doesn't affect the original reference outside the method.
